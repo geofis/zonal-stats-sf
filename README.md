@@ -1,1 +1,1 @@
-# zonal-stats-sf
+# R function for zonal statistics of `sf` objects
