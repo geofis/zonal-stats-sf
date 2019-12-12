@@ -1,20 +1,23 @@
-zstatsf <- function(x = NULL, y = NULL, grpx = NULL, grpy = NULL) {
+zstatsf <- function(zones = NULL, values = NULL, grpx = NULL, grpy = NULL) {
   #Example:
+  # basinp <- st_read('basins_parra_ocoa.gpkg')
+  # basinall <- st_read('basins_order_4_ocoa.gpkg')
+  # lito <- st_read('litologias.gpkg')
   # zstatsf(
-  #   x = 'basins_parra_ocoa.gpkg',
-  #   y = 'litologias.gpkg',
+  #   zones = basinp,
+  #   values = lito,
   #   grpx = 'value', grpy = 'DLO')
   # zstatsf(
-  #   x = 'basins_order_4_ocoa.gpkg',
-  #   y = 'litologias.gpkg',
+  #   zones = basinall,
+  #   values = lito,
   #   grpx = 'cat', grpy = 'DLO')
   suppressWarnings({
     require(sf)
     require(tidyverse)
     require(purrr)
     
-    xsf <- st_read(x, quiet = T)
-    ysf <- st_read(y, quiet = T)
+    xsf <- zones
+    ysf <- values
     
     xsf <- xsf %>% rename(varx = contains(grpx))
     ysf <- ysf %>% rename(vary = matches(grpy))
